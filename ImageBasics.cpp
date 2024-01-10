@@ -2,28 +2,25 @@
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/utils/logger.hpp>
-#include "ImageBasics.h"
+//#include "ImageBasics.h"
 //#include "faceDetection.h"								//uncomment to use basic face detection
 //#include "faceDetectionWithLog.h"                         //uncomment to use basic face detection with log
-#include "faceCounterExperimental.h"						//uncomment to use experimental face detection with log
-
+#include "JPEGdebugging.h"
+#include "ImageBasics.h"
+//#include "faceCounterExperimental.h"						//uncomment to use experimental face detection with log
 using namespace std;
 using namespace cv;
+
 
 String faceCascadePath = "C:/Users/marco/Desktop/haarcascade_frontalface_default.xml.txt";
 String logFilePath = "C:/Users/marco/Desktop/face_detection_log.txt";
 
 void  main()
 {
-	faceDetection(faceCascadePath, logFilePath);
+	FaceDetection faceDetection(imagePath, faceCascadePath, logFilePath);
+	faceDetection.runFaceDetection();
 }
-
-
-
-
-
-
-
+	
 
 
 

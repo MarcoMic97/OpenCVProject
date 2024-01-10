@@ -49,6 +49,9 @@ FaceDetection::FaceDetection(const String& faceCascadePath, const String& logFil
 int FaceDetection::runFaceDetection() {
     namedWindow("Face Detection", WINDOW_NORMAL);
 
+    const int consecutiveFramesThreshold = 5; // Adjust this threshold as needed
+    int consecutiveFramesWithFace = 0;
+
     while (true) {
         Mat frame;
         cap >> frame;
@@ -73,6 +76,7 @@ int FaceDetection::runFaceDetection() {
                 rectangle(frame, faceRect, Scalar(0, 255, 0), 2);
                 uniqueFaceIds.insert(faceId);
                 lastDetectedFace = faceRect;
+                consecutiveFramesWithFace = 1;
 
                 // Increment the total number of unique faces
                 totalUniqueFaces++;
@@ -83,11 +87,20 @@ int FaceDetection::runFaceDetection() {
             else {
                 // Face already counted, keep the square on the face
                 rectangle(frame, lastDetectedFace, Scalar(0, 255, 0), 2);
+                consecutiveFramesWithFace++;
+            }
+
+            if (consecutiveFramesWithFace >= consecutiveFramesThreshold) {
+                // Reset the face tracking if the face has been consistently detected for the specified frames
+                uniqueFaceIds.clear();
+                consecutiveFramesWithFace = 0;
             }
         }
-        else {
-            // No face detected, consider it as the face leaving the frame
+        else if (!uniqueFaceIds.empty()) {
+            // No face detected in this frame, but faces were detected in previous frames
+            // Consider it as the face leaving the frame
             uniqueFaceIds.clear();
+            consecutiveFramesWithFace = 0;
         }
 
         imshow("Face Detection", frame);
@@ -103,6 +116,8 @@ int FaceDetection::runFaceDetection() {
 
     return 0;
 }
+
+
 
 // Function to be called from the main program
 void faceDetection(const String& faceCascadePath, const String& logFilePath) {

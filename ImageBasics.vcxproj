@@ -140,6 +140,7 @@
     <ClInclude Include="faceDetection.h" />
     <ClInclude Include="faceDetectionWithLog.h" />
     <ClInclude Include="ImageBasics.h" />
+    <ClInclude Include="JPEGdebugging.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
