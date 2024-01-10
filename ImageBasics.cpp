@@ -17,6 +17,7 @@ String logFilePath = "C:/Users/marco/Desktop/face_detection_log.txt";
 
 void  main()
 {
+	utils::logging::setLogLevel(cv::utils::logging::LogLevel::LOG_LEVEL_SILENT);
 	FaceDetection faceDetection(imagePath, faceCascadePath, logFilePath);
 	faceDetection.runFaceDetection();
 }

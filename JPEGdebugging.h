@@ -6,8 +6,9 @@
 #include <unordered_set>
 
 using namespace cv;
+using namespace std;
 
-String imagePath = "C:/Users/marco/Desktop/debug.jpg";
+String imagePath = "C:/Users/marco/Desktop/annefrank.jpg";
 
 class FaceDetection {
 public:
@@ -27,20 +28,20 @@ FaceDetection::FaceDetection(const String& imagePath, const String& cascadePath,
     : logFilePath(logFilePath), totalUniqueFaces(0) {
 
     if (imagePath.empty() || cascadePath.empty()) {
-        std::cerr << "Error: Image path or cascade path is empty." << std::endl;
+        cerr << "Error: Image path or cascade path is empty." << endl;
         exit(EXIT_FAILURE);
     }
 
     // Load the face cascade classifier
     if (!faceCascade.load(cascadePath)) {
-        std::cerr << "Error: Could not load face cascade classifier." << std::endl;
+        cerr << "Error: Could not load face cascade classifier." << endl;
         exit(EXIT_FAILURE);
     }
 
     // Open the log file for writing
     logFile.open(logFilePath);
     if (!logFile.is_open()) {
-        std::cerr << "Error: Could not open log file." << std::endl;
+        cerr << "Error: Could not open log file." << endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -49,7 +50,7 @@ int FaceDetection::runFaceDetection() {
     Mat frame = imread(imagePath, IMREAD_COLOR);
 
     if (frame.empty()) {
-        std::cerr << "Error: Could not read image from file." << std::endl;
+        cerr << "Error: Could not read image from file." << endl;
         return -1;
     }
 
@@ -66,6 +67,9 @@ int FaceDetection::runFaceDetection() {
 
             int faceId = static_cast<int>(faceRect.y + faceRect.height / 2); // Unique identifier for each face
 
+            //write text under the rectangle
+            putText(frame, "Jew #: " + to_string(faceId), Point(faceRect.x, faceRect.y + faceRect.height + 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0), 1);
+
             if (uniqueFaceIds.find(faceId) == uniqueFaceIds.end()) {
                 // New face detected, not counted before
                 uniqueFaceIds.insert(faceId);
@@ -75,7 +79,7 @@ int FaceDetection::runFaceDetection() {
                 totalUniqueFaces++;
 
                 // Write the current frame's face count to the log file
-                logFile << "New face introduced. Total unique faces: " << totalUniqueFaces << std::endl;
+                logFile << "New face introduced. Total unique faces: " << totalUniqueFaces << endl;
             }
         }
 
@@ -95,5 +99,3 @@ void faceDetection(const String& imagePath, const String& cascadePath, const Str
     FaceDetection faceDetectionObj(imagePath, cascadePath, logFilePath);
     faceDetectionObj.runFaceDetection();
 }
-
-

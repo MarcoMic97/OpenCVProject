@@ -6,6 +6,7 @@
 #include <unordered_set>
 
 using namespace cv;
+using namespace std;
 
 class FaceDetection {
 public:
@@ -16,8 +17,8 @@ private:
     CascadeClassifier faceCascade;
     VideoCapture cap;
     String logFilePath;
-    std::unordered_set<int> uniqueFaceIds; // Keep track of unique faces detected
-    std::ofstream logFile;
+    unordered_set<int> uniqueFaceIds; // Keep track of unique faces detected
+    ofstream logFile;
     Rect lastDetectedFace; // Store the last detected face rectangle
     int totalUniqueFaces; // Counter for total number of unique faces
 };
@@ -27,21 +28,21 @@ FaceDetection::FaceDetection(const String& faceCascadePath, const String& logFil
 
     // Load the face cascade classifier
     if (!faceCascade.load(faceCascadePath)) {
-        std::cerr << "Error: Could not load face cascade classifier." << std::endl;
+        cerr << "Error: Could not load face cascade classifier." << endl;
         exit(EXIT_FAILURE);
     }
 
     // Open the webcam
     cap.open(0);
     if (!cap.isOpened()) {
-        std::cerr << "Error: Could not open webcam." << std::endl;
+        cerr << "Error: Could not open webcam." << endl;
         exit(EXIT_FAILURE);
     }
 
     // Open the log file for writing
     logFile.open(logFilePath);
     if (!logFile.is_open()) {
-        std::cerr << "Error: Could not open log file." << std::endl;
+        cerr << "Error: Could not open log file." << endl;
         exit(EXIT_FAILURE);
     }
 }
@@ -57,7 +58,7 @@ int FaceDetection::runFaceDetection() {
         cap >> frame;
 
         if (frame.empty()) {
-            std::cerr << "Error: Could not read frame." << std::endl;
+            cerr << "Error: Could not read frame." << endl;
             break;
         }
 
@@ -82,7 +83,7 @@ int FaceDetection::runFaceDetection() {
                 totalUniqueFaces++;
 
                 // Write the current frame's face count to the log file
-                logFile << "Frame " << cap.get(CAP_PROP_POS_FRAMES) << ": New face introduced. Total unique faces: " << totalUniqueFaces << std::endl;
+                logFile << "Frame " << cap.get(CAP_PROP_POS_FRAMES) << ": New face introduced. Total unique faces: " << totalUniqueFaces << endl;
             }
             else {
                 // Face already counted, keep the square on the face
