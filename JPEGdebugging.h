@@ -62,28 +62,21 @@ int FaceDetection::runFaceDetection() {
 
     if (!faces.empty()) {
         for (const auto& faceRect : faces) {
-            // Draw rectangles around the detected faces
             rectangle(frame, faceRect, Scalar(0, 255, 0), 2);
 
             int faceId = static_cast<int>(faceRect.y + faceRect.height / 2); // Unique identifier for each face
-
-            //write text under the rectangle
             putText(frame, "ID: " + to_string(faceId), Point(faceRect.x, faceRect.y + faceRect.height + 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0), 1);
 
             if (uniqueFaceIds.find(faceId) == uniqueFaceIds.end()) {
-                // New face detected, not counted before
                 uniqueFaceIds.insert(faceId);
                 lastDetectedFace = faceRect;
 
-                // Increment the total number of unique faces
-                totalUniqueFaces++;
+                 totalUniqueFaces++;
 
-                // Write the current frame's face count to the log file
                 logFile << "New face introduced. Total unique faces: " << totalUniqueFaces << endl;
             }
         }
 
-        // Display the image with rectangles around the faces
         imshow("Face Detection", frame);
         waitKey(0);
     }

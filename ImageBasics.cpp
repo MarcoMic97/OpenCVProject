@@ -5,7 +5,7 @@
 //#include "ImageBasics.h"									//uncomment for general exercises
 //#include "faceDetection.h"								//uncomment to use basic face detection
 //#include "faceDetectionWithLog.h"                         //uncomment to use basic face detection with log
-//#include "JPEGdebugging.h"								//uncomment to use JPEG debugging
+//#include "JPEGdebugging.h"									//uncomment to use JPEG debugging
 #include "faceCounterExperimental.h"						//uncomment to use experimental face detection with log
 using namespace std;
 using namespace cv;
@@ -18,13 +18,22 @@ void main()
 {
 	utils::logging::setLogLevel(cv::utils::logging::LogLevel::LOG_LEVEL_SILENT);
 
-	/* //JPEG function
+	/*
+	//JPEG debug function
 	FaceDetection faceDetection(imagePath, faceCascadePath, logFilePath);
-	faceDetection.runFaceDetection(); */
+	faceDetection.runFaceDetection(); 
+	*/
 
-	//Webcam function
+	/*
+	//use basic face detection
+	faceDetection();
+	*/
+	
+	
+	//Webcam function with log
 	FaceDetection FaceDetection(faceCascadePath, logFilePath);
 	FaceDetection.runFaceDetection();
+	
 }
 	
 
