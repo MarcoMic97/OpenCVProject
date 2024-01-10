@@ -8,7 +8,9 @@
 using namespace cv;
 using namespace std;
 
-String imagePath = "C:/Users/marco/Desktop/debug2.jpg";
+String imagePath = "C:/Users/marco/Desktop/debug3.png";
+int screenWidth = 1280;
+int screenHeight = 720;
 
 class FaceDetection {
 public:
@@ -77,7 +79,10 @@ int FaceDetection::runFaceDetection() {
             }
         }
 
-        imshow("Face Detection", frame);
+        resize(frame, frame, Size(screenWidth, screenHeight));
+        imshow("face detection", frame);
+
+        //imshow("Face Detection", frame);
         waitKey(0);
     }
 

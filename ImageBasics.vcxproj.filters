@@ -35,5 +35,8 @@
     <ClInclude Include="JPEGdebugging.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="multiCascadeClassifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
