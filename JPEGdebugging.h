@@ -8,7 +8,7 @@
 using namespace cv;
 using namespace std;
 
-String imagePath = "C:/Users/marco/Desktop/annefrank.jpg";
+String imagePath = "C:/Users/marco/Desktop/debug2.jpg";
 
 class FaceDetection {
 public:
@@ -18,8 +18,8 @@ public:
 private:
     CascadeClassifier faceCascade;
     String logFilePath;
-    std::unordered_set<int> uniqueFaceIds; // Keep track of unique faces detected
-    std::ofstream logFile;
+    unordered_set<int> uniqueFaceIds; // Keep track of unique faces detected
+    ofstream logFile;
     Rect lastDetectedFace; // Store the last detected face rectangle
     int totalUniqueFaces; // Counter for the total number of unique faces
 };
@@ -68,7 +68,7 @@ int FaceDetection::runFaceDetection() {
             int faceId = static_cast<int>(faceRect.y + faceRect.height / 2); // Unique identifier for each face
 
             //write text under the rectangle
-            putText(frame, "Jew #: " + to_string(faceId), Point(faceRect.x, faceRect.y + faceRect.height + 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0), 1);
+            putText(frame, "ID: " + to_string(faceId), Point(faceRect.x, faceRect.y + faceRect.height + 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0), 1);
 
             if (uniqueFaceIds.find(faceId) == uniqueFaceIds.end()) {
                 // New face detected, not counted before
