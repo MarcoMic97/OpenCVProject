@@ -5,8 +5,8 @@
 //#include "ImageBasics.h"									//uncomment for general exercises
 //#include "faceDetection.h"								//uncomment to use basic face detection
 //#include "faceDetectionWithLog.h"                         //uncomment to use basic face detection with log
-//#include "JPEGdebugging.h"									//uncomment to use JPEG debugging
-#include "multiCascadeClassifier.h"							//uncomment to use multiple cascade classifiers
+//#include "JPEGdebugging.h"								//uncomment to use JPEG debugging
+#include "multiCascadeClassifier.h"							//uncomment to use multiple cascade classifiers on single image
 //#include "faceCounterExperimental.h"						//uncomment to use experimental face detection with log
 using namespace std;
 using namespace cv;
@@ -19,7 +19,7 @@ vector<String> cascadePaths = { "C:/Users/marco/Desktop/haarcascade_frontalface_
 void main()
 {
 	utils::logging::setLogLevel(cv::utils::logging::LogLevel::LOG_LEVEL_SILENT);
-
+	
 	/*/
 	//JPEG debug function
 	FaceDetection faceDetection(imagePath, faceCascadePath, logFilePath);
