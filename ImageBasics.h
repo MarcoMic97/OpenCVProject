@@ -1,31 +1,31 @@
-#pragma once
-#include <iostream>
-#include <opencv2/core.hpp>
-#include <opencv2/opencv.hpp>
-#include <opencv2/core/utils/logger.hpp>
-
-using namespace std;
-using namespace cv;
-
-
-//Øvelse 0
-int showImage()
-{
-	try
-	{
-		std::string image_path = "C:/opencv/sources/samples/data/starry_night.jpg";
-		Mat img = imread(image_path, IMREAD_COLOR);
-		imshow("Image", img);
-		waitKey(0);
-		return 0;
-	}
-	catch (const cv::Exception& e)
-	{
-		cerr << "Error opening image: " << e.what() << endl;
-		cerr << "Error code: " << e.code << endl;
-		return 0;
-	}
-}
+//#pragma once
+//#include <iostream>
+//#include <opencv2/core.hpp>
+//#include <opencv2/opencv.hpp>
+//#include <opencv2/core/utils/logger.hpp>
+//
+//using namespace std;
+//using namespace cv;
+//
+//
+////Øvelse 0
+//int showImage()
+//{
+//	try
+//	{
+//		std::string image_path = "C:/opencv/sources/samples/data/starry_night.jpg";
+//		Mat img = imread(image_path, IMREAD_COLOR);
+//		imshow("Image", img);
+//		waitKey(0);
+//		return 0;
+//	}
+//	catch (const cv::Exception& e)
+//	{
+//		cerr << "Error opening image: " << e.what() << endl;
+//		cerr << "Error code: " << e.code << endl;
+//		return 0;
+//	}
+//}
 
 //Øvelse 1
 //int main()
