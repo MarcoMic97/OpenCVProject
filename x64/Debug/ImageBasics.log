@@ -1,3 +1,34 @@
 ﻿  ImageBasics.cpp
-C:\Users\marco\source\repos\ImageBasics\ImageBasics.cpp(20,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  ImageBasics.vcxproj -> C:\Users\marco\source\repos\ImageBasics\x64\Debug\ImageBasics.exe
+C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,24): error C2663: 'cv::CascadeClassifier::detectMultiScale': no overloaded function has valid conversion for 'this' pointer
+  (compiling source file 'ImageBasics.cpp')
+  C:\opencv\build\include\opencv2\objdetect.hpp(342,40):
+  could be 'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,std::vector<int,std::allocator<int>> &,std::vector<_Tp,std::allocator<_Tp>> &,double,int,int,cv::Size,cv::Size,bool)'
+          with
+          [
+              _Tp=double
+          ]
+  	C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,24):
+  	'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,std::vector<int,std::allocator<int>> &,std::vector<_Tp,std::allocator<_Tp>> &,double,int,int,cv::Size,cv::Size,bool)': cannot convert 'this' pointer from 'const cv::CascadeClassifier' to 'cv::CascadeClassifier &'
+          with
+          [
+              _Tp=double
+          ]
+  		C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,13):
+  		Conversion loses qualifiers
+  C:\opencv\build\include\opencv2\objdetect.hpp(317,40):
+  or       'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,std::vector<int,std::allocator<int>> &,double,int,int,cv::Size,cv::Size)'
+  	C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,24):
+  	'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,std::vector<int,std::allocator<int>> &,double,int,int,cv::Size,cv::Size)': cannot convert 'this' pointer from 'const cv::CascadeClassifier' to 'cv::CascadeClassifier &'
+  		C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,13):
+  		Conversion loses qualifiers
+  C:\opencv\build\include\opencv2\objdetect.hpp(295,18):
+  or       'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,double,int,int,cv::Size,cv::Size)'
+  	C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,24):
+  	'void cv::CascadeClassifier::detectMultiScale(cv::InputArray,std::vector<cv::Rect,std::allocator<cv::Rect>> &,double,int,int,cv::Size,cv::Size)': cannot convert 'this' pointer from 'const cv::CascadeClassifier' to 'cv::CascadeClassifier &'
+  		C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,13):
+  		Conversion loses qualifiers
+  C:\Users\marco\source\repos\ImageBasics\multiCascadeClassifierWEBCAM.h(75,24):
+  while trying to match the argument list '(cv::Mat, std::vector<cv::Rect,std::allocator<cv::Rect>>, double, int)'
+  
+C:\Users\marco\source\repos\ImageBasics\ImageBasics.cpp(25,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\marco\source\repos\ImageBasics\ImageBasics.cpp(54,30): error C2065: 'faceCascadePaths': undeclared identifier
