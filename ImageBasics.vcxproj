@@ -141,7 +141,6 @@
     <ClInclude Include="faceDetectionWithLog.h" />
     <ClInclude Include="ImageBasics.h" />
     <ClInclude Include="JPEGdebugging.h" />
-    <ClInclude Include="multiCascadeClassifier.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
