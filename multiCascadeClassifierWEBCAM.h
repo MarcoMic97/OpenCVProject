@@ -4,6 +4,7 @@
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
 #include <unordered_set>
+#include <string>
 
 using namespace cv;
 using namespace std;
@@ -70,7 +71,7 @@ int FaceDetection::runFaceDetection() {
         cvtColor(frame, gray, COLOR_BGR2GRAY); // Use the same 'gray' for each cascade
 
         std::vector<Rect> faces;
-        for (const auto& faceCascade : faceCascades) {
+        for (auto& faceCascade : faceCascades) {
             // Convert 'gray' to CV_8U to match the expected argument type of detectMultiScale
             Mat gray8U;
             gray.convertTo(gray8U, CV_8U);
@@ -125,8 +126,7 @@ int FaceDetection::runFaceDetection() {
 }
 
 // Function to be called from the main program
-void faceDetection(const vector<String>& faceCascadePaths, const String& logFilePath) {
-    FaceDetection faceDetectionObj(faceCascadePaths, logFilePath);
+void faceDetection(const vector<String>& cascadePaths, const String& logFilePath) {
+    FaceDetection faceDetectionObj(cascadePaths, logFilePath);
     faceDetectionObj.runFaceDetection();
 }
-

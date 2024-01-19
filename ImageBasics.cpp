@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
@@ -12,23 +13,23 @@
 using namespace std;
 using namespace cv;
 
-
 String faceCascadePath = "C:/Users/marco/Desktop/haarcascade_frontalface_default.xml.txt";				//Stump-based 24x24 Discrete AdaBoost Frontal Face Detector
 String logFilePath = "C:/Users/marco/Desktop/face_detection_log.txt";
 vector<String> cascadePaths = { "C:/Users/marco/Desktop/haarcascade_frontalface_default.xml.txt",
-								"C:/Users/marco/Desktop/haarcascade_profileface.xml.txt", 
-								"C:/Users/marco/Desktop/haarcascade_frontalface_alt.xml.txt", 
-								"C:/Users/marco/Desktop/haarcascade_eye.xml.txt", 
-								"C:/Users/marco/Desktop/haarcascade_frontalface_alt2.xml.txt" };
+									"C:/Users/marco/Desktop/haarcascade_profileface.xml.txt",
+									"C:/Users/marco/Desktop/haarcascade_frontalface_alt.xml.txt",
+									"C:/Users/marco/Desktop/haarcascade_eye.xml.txt",
+									"C:/Users/marco/Desktop/haarcascade_frontalface_alt2.xml.txt" };
 
-void main()
-{
+void main() {
+
+
 	utils::logging::setLogLevel(cv::utils::logging::LogLevel::LOG_LEVEL_SILENT);
-	
+
 	/*
 	//JPEG debug function
 	FaceDetection faceDetection(imagePath, faceCascadePath, logFilePath);
-	faceDetection.runFaceDetection(); 
+	faceDetection.runFaceDetection();
 	*/
 
 
@@ -43,15 +44,14 @@ void main()
 	//use basic face detection
 	faceDetection();
 	*/
-	
+
 	/*
 	//Webcam function with log
 	FaceDetection FaceDetection(faceCascadePath, logFilePath);
 	FaceDetection.runFaceDetection();
-
 	*/
+
 	//Webcam function with multiple cascade classifiers using the included multiCascadeClassifierWEBCAM.h file
-	FaceDetection FaceDetection(faceCascadePath, cascadePaths, logFilePath);
-	FaceDetection.runFaceDetection(); 
-		
-}
+	FaceDetection faceDetection(cascadePaths, logFilePath); 
+	faceDetection.runFaceDetection();
+	}
